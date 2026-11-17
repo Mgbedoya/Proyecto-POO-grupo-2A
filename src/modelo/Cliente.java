@@ -48,7 +48,7 @@ public abstract class Cliente implements Serializable {
     @Override
     public String toString() {
         return "Identificación: " + numeroIdentificacion +
-               "\nNombre: " + nombre +
+               "\nnombre: " + nombre +
                "\nCiudad: " + nombreCiudad;
     }
 }
