@@ -12,6 +12,8 @@ package modelo;
 import java.io.Serializable;
 
 public class Empleado implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String numeroIdentificacion;
     private String nombreCompleto;
     private String tituloProfesional;
@@ -25,43 +27,23 @@ public class Empleado implements Serializable {
         this.aniosExperiencia = aniosExperiencia;
     }
 
-    public String getNumeroIdentificacion() {
-        return numeroIdentificacion;
-    }
+    public String getNumeroIdentificacion() { return numeroIdentificacion; }
+    public void setNumeroIdentificacion(String numeroIdentificacion) { this.numeroIdentificacion = numeroIdentificacion; }
 
-    public void setNumeroIdentificacion(String numeroIdentificacion) {
-        this.numeroIdentificacion = numeroIdentificacion;
-    }
+    public String getNombreCompleto() { return nombreCompleto; }
+    public void setNombreCompleto(String nombreCompleto) { this.nombreCompleto = nombreCompleto; }
 
-    public String getNombreCompleto() {
-        return nombreCompleto;
-    }
+    public String getTituloProfesional() { return tituloProfesional; }
+    public void setTituloProfesional(String tituloProfesional) { this.tituloProfesional = tituloProfesional; }
 
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
-    }
-
-    public String getTituloProfesional() {
-        return tituloProfesional;
-    }
-
-    public void setTituloProfesional(String tituloProfesional) {
-        this.tituloProfesional = tituloProfesional;
-    }
-
-    public byte getAniosExperiencia() {
-        return aniosExperiencia;
-    }
-
-    public void setAniosExperiencia(byte aniosExperiencia) {
-        this.aniosExperiencia = aniosExperiencia;
-    }
+    public byte getAniosExperiencia() { return aniosExperiencia; }
+    public void setAniosExperiencia(byte aniosExperiencia) { this.aniosExperiencia = aniosExperiencia; }
 
     @Override
     public String toString() {
-        return "ID Empleado: " + numeroIdentificacion +
-               "\nNombre: " + nombreCompleto +
-               "\nTítulo Profesional: " + tituloProfesional +
-               "\nAños de Experiencia: " + aniosExperiencia;
+        return "Identificación: " + numeroIdentificacion
+             + "\nNombre: " + nombreCompleto
+             + "\nTítulo profesional: " + tituloProfesional
+             + "\nAños de experiencia: " + aniosExperiencia;
     }
 }

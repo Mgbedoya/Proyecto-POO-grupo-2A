@@ -35,8 +35,8 @@ public class Proyecto implements Serializable {
         this.duracionEstimada = duracionEstimada;
         this.suCliente = suCliente;
         this.suGerente = suGerente;
-        this.suEquipo = (suEquipo != null) ? suEquipo : new ArrayList<>();
-        this.estado = (estado != null && !estado.isEmpty()) ? estado : "INICIADO";
+        this.suEquipo = suEquipo;
+        this.estado = "INICIADO";
     }
 
     // Constructor sobrecargado (sin equipo y con estado por defecto "INICIADO")
@@ -127,38 +127,24 @@ public class Proyecto implements Serializable {
 
     // Métodos de negocio definidos en el diagrama de clases
     public LocalDate determinarFechaFinalizacion() {
-        if (fechaInicio == null || unidadDuracion == null) {
-            return fechaInicio;
+        LocalDate fin;
+        switch (unidadDuracion) {
+            case "semanas": fin = fechaInicio.plusWeeks(duracionEstimada); break;
+            case "meses":   fin = fechaInicio.plusMonths(duracionEstimada); break;
+            default:        fin = fechaInicio.plusYears(duracionEstimada); break; // años
         }
-        switch (unidadDuracion.toLowerCase().trim()) {
-            case "semanas":
-                return fechaInicio.plusWeeks(duracionEstimada);
-            case "meses":
-                return fechaInicio.plusMonths(duracionEstimada);
-            case "años":
-            case "anios":
-                return fechaInicio.plusYears(duracionEstimada);
-            default:
-                return fechaInicio;
-        }
+        return fin;
     }
 
     public void agregarIntegrante(Empleado nuevoIntegrante) {
-        if (this.suEquipo == null) {
-            this.suEquipo = new ArrayList<>();
-        }
-        if (nuevoIntegrante != null) {
-            this.suEquipo.add(nuevoIntegrante);
-        }
+        suEquipo.add(nuevoIntegrante);
     }
 
+    /** Elimina y devuelve al integrante con ese número de identificación; null si no existe. */
     public Empleado eliminarIntegrante(String numeroIdentificacion) {
-        if (this.suEquipo != null && numeroIdentificacion != null) {
-            for (int i = 0; i < this.suEquipo.size(); i++) {
-                Empleado emp = this.suEquipo.get(i);
-                if (emp.getNumeroIdentificacion().equals(numeroIdentificacion)) {
-                    return this.suEquipo.remove(i);
-                }
+        for (int i = 0; i < suEquipo.size(); i++) {
+            if (suEquipo.get(i).getNumeroIdentificacion().equals(numeroIdentificacion)) {
+                return suEquipo.remove(i);
             }
         }
         return null;
@@ -166,26 +152,14 @@ public class Proyecto implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("========================================\n");
-        sb.append("PROYECTO: ").append(codigo).append(" - ").append(titulo).append("\n");
-        sb.append("Estado: ").append(estado).append("\n");
-        sb.append("Fecha Inicio: ").append(fechaInicio).append("\n");
-        sb.append("Duración: ").append(duracionEstimada).append(" ").append(unidadDuracion).append("\n");
-        sb.append("Fecha Estimada Finalización: ").append(determinarFechaFinalizacion()).append("\n");
-        sb.append("\n--- CLIENTE ---\n");
-        sb.append(suCliente != null ? suCliente.toString() : "Sin cliente asignado").append("\n");
-        sb.append("\n--- GERENTE ---\n");
-        sb.append(suGerente != null ? suGerente.toString() : "Sin gerente asignado").append("\n");
-        sb.append("\n--- EQUIPO DE TRABAJO ---\n");
-        if (suEquipo == null || suEquipo.isEmpty()) {
-            sb.append("Sin integrantes asignados aún.\n");
-        } else {
-            for (Empleado emp : suEquipo) {
-                sb.append(emp.toString()).append("\n--------------------\n");
-            }
-        }
-        sb.append("========================================");
-        return sb.toString();
+        String resultado = "PROYECTO " + codigo
+                + "\nTítulo: " + titulo
+                + "\nFecha de inicio: " + fechaInicio
+                + "\nDuración estimada: " + duracionEstimada + " " + unidadDuracion
+                + "\nEstado: " + estado
+                + "\nIntegrantes del equipo: " + suEquipo.size()
+                + "\n" + suCliente
+                + "\n--- Gerente ---\n" + suGerente;
+        return resultado;
     }
 }
