@@ -37,7 +37,7 @@ public final class PersonaNatural extends Cliente {
 
     @Override
     public String toString() {
-        return "--- CLIENTE: PERSONA NATURAL ---\n" +
+        return "CLIENTE: PERSONA NATURAL\n" +
                super.toString() +
                "\nTeléfono: " + numeroTelefono +
                "\nCorreo Electrónico: " + correoElectronico;
