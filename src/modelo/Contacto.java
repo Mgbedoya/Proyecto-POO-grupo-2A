@@ -8,7 +8,8 @@ import java.io.Serializable;
 
 /**
  *
- * @author Windows
+ * @author migue
+ * 
  */
 public class Contacto implements Serializable {
     private String nombreCompleto;

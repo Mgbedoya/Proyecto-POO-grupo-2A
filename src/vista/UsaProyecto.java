@@ -28,7 +28,7 @@ import modelo.Proyecto;
 
 /**
  *
- * @author Windows
+ * @author mari
  */
 public class UsaProyecto extends javax.swing.JFrame {
 
@@ -1520,10 +1520,6 @@ public class UsaProyecto extends javax.swing.JFrame {
         }
         mostrarResultado(texto);
  
-        jTextAreaResultados.setText("");
- 
-        JOptionPane.showMessageDialog(this, "El programa se cerrará, gracias por utilizar nuestros servicios.");
-        System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonLeerArchivoClientesActionPerformed
 
     private void jComboBoxTipoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTipoClienteActionPerformed

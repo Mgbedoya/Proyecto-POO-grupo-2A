@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Windows
+ * @author migue
  */
 public abstract class Cliente implements Serializable {
     protected String numeroIdentificacion;

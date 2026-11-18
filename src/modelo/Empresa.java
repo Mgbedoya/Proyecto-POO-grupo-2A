@@ -6,7 +6,7 @@ package modelo;
 
 /**
  *
- * @author Windows
+ * @author migue
  */
 public final class Empresa extends Cliente {
     private Contacto suContacto;

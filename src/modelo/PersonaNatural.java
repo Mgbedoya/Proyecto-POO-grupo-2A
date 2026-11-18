@@ -6,7 +6,7 @@ package modelo;
 
 /**
  *
- * @author Windows
+ * @author migue
  */
 public final class PersonaNatural extends Cliente {
     private String numeroTelefono;
