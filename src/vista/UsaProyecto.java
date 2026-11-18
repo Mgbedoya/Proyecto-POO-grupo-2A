@@ -85,7 +85,19 @@ public class UsaProyecto extends javax.swing.JFrame {
         jButtonConsultarPorCliente = new javax.swing.JButton();
         jButtonConsultarPorTipoCliente = new javax.swing.JButton();
         jPanelGestion = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jTextFieldCodigoGestion = new javax.swing.JTextField();
+        jButtonRegistrarIntegrante = new javax.swing.JButton();
+        jButtonRegistrarEquipo = new javax.swing.JButton();
+        jButtonEliminarIntegrante = new javax.swing.JButton();
+        jComboBoxEstado = new javax.swing.JComboBox<>();
+        jButton8 = new javax.swing.JButton();
         jPanelArchivos = new javax.swing.JPanel();
+        jButtonGenerarArchivoProyectos = new javax.swing.JButton();
+        jButtonGenerarArchivoClientes = new javax.swing.JButton();
+        jButtonLeerArchivoClientes = new javax.swing.JButton();
+        jButtonLeerArchivoProyectos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestión de Proyectos");
@@ -389,7 +401,7 @@ public class UsaProyecto extends javax.swing.JFrame {
                         .addComponent(jPanelProyecto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanelGerente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Registrar proyecto", jPanelRegistro);
@@ -438,6 +450,11 @@ public class UsaProyecto extends javax.swing.JFrame {
         jLabel19.setText("Tipo de cliente");
 
         jComboBoxTipoClienteFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empresa", "PersonaNatural" }));
+        jComboBoxTipoClienteFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxTipoClienteFiltroActionPerformed(evt);
+            }
+        });
 
         jButtonConsultarProyectoCodigo.setText("Proyecto por codigo");
 
@@ -512,7 +529,7 @@ public class UsaProyecto extends javax.swing.JFrame {
                 .addGroup(jPanelConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelConsultasGenerales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanelConsultasFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(382, Short.MAX_VALUE))
+                .addContainerGap(335, Short.MAX_VALUE))
         );
         jPanelConsultasLayout.setVerticalGroup(
             jPanelConsultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -521,33 +538,107 @@ public class UsaProyecto extends javax.swing.JFrame {
                 .addComponent(jPanelConsultasGenerales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelConsultasFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Consultas", jPanelConsultas);
+
+        jLabel21.setText("Código del proyecto:");
+
+        jLabel22.setText("Nuevo estado:");
+
+        jButtonRegistrarIntegrante.setText("Registrar integrante");
+
+        jButtonRegistrarEquipo.setText("Registrar equipo");
+
+        jButtonEliminarIntegrante.setText("Eliminar integrante");
+
+        jComboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INICIADO", "EN CURSO", "CANCELADO", "FINALIZADO", "APLAZADO" }));
+
+        jButton8.setText("Actualizar Estado");
 
         javax.swing.GroupLayout jPanelGestionLayout = new javax.swing.GroupLayout(jPanelGestion);
         jPanelGestion.setLayout(jPanelGestionLayout);
         jPanelGestionLayout.setHorizontalGroup(
             jPanelGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 852, Short.MAX_VALUE)
+            .addGroup(jPanelGestionLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanelGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelGestionLayout.createSequentialGroup()
+                        .addComponent(jButtonRegistrarIntegrante)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonRegistrarEquipo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonEliminarIntegrante))
+                    .addGroup(jPanelGestionLayout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton8))
+                    .addGroup(jPanelGestionLayout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldCodigoGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(384, Short.MAX_VALUE))
         );
         jPanelGestionLayout.setVerticalGroup(
             jPanelGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 581, Short.MAX_VALUE)
+            .addGroup(jPanelGestionLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanelGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(jTextFieldCodigoGestion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanelGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonRegistrarIntegrante)
+                    .addComponent(jButtonRegistrarEquipo)
+                    .addComponent(jButtonEliminarIntegrante))
+                .addGap(30, 30, 30)
+                .addGroup(jPanelGestionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(jComboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton8))
+                .addContainerGap(451, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Gestión de proyecto", jPanelGestion);
+
+        jButtonGenerarArchivoProyectos.setText("Generar archivo de proyectos\n");
+
+        jButtonGenerarArchivoClientes.setText("Generar archivo de clientes ");
+
+        jButtonLeerArchivoClientes.setText("Leer archivo de clientes ");
+
+        jButtonLeerArchivoProyectos.setText("Leer archivo de proyectos ");
 
         javax.swing.GroupLayout jPanelArchivosLayout = new javax.swing.GroupLayout(jPanelArchivos);
         jPanelArchivos.setLayout(jPanelArchivosLayout);
         jPanelArchivosLayout.setHorizontalGroup(
             jPanelArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 852, Short.MAX_VALUE)
+            .addGroup(jPanelArchivosLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanelArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonGenerarArchivoProyectos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonLeerArchivoProyectos, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonLeerArchivoClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonGenerarArchivoClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(409, Short.MAX_VALUE))
         );
         jPanelArchivosLayout.setVerticalGroup(
             jPanelArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 581, Short.MAX_VALUE)
+            .addGroup(jPanelArchivosLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanelArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonGenerarArchivoProyectos, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonGenerarArchivoClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelArchivosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonLeerArchivoProyectos, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonLeerArchivoClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(479, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Archivos", jPanelArchivos);
@@ -577,6 +668,10 @@ public class UsaProyecto extends javax.swing.JFrame {
     private void jTextFieldGerenteTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldGerenteTituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldGerenteTituloActionPerformed
+
+    private void jComboBoxTipoClienteFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTipoClienteFiltroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxTipoClienteFiltroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -618,14 +713,23 @@ public class UsaProyecto extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButtonConsultarEquipo;
     private javax.swing.JButton jButtonConsultarGerente;
     private javax.swing.JButton jButtonConsultarPorCliente;
     private javax.swing.JButton jButtonConsultarPorGerente;
     private javax.swing.JButton jButtonConsultarPorTipoCliente;
     private javax.swing.JButton jButtonConsultarProyectoCodigo;
+    private javax.swing.JButton jButtonEliminarIntegrante;
+    private javax.swing.JButton jButtonGenerarArchivoClientes;
+    private javax.swing.JButton jButtonGenerarArchivoProyectos;
+    private javax.swing.JButton jButtonLeerArchivoClientes;
+    private javax.swing.JButton jButtonLeerArchivoProyectos;
     private javax.swing.JButton jButtonLimpiarFormulario;
+    private javax.swing.JButton jButtonRegistrarEquipo;
+    private javax.swing.JButton jButtonRegistrarIntegrante;
     private javax.swing.JButton jButtonRegistrarProyecto;
+    private javax.swing.JComboBox<String> jComboBoxEstado;
     private javax.swing.JComboBox<String> jComboBoxTipoCliente;
     private javax.swing.JComboBox<String> jComboBoxTipoClienteFiltro;
     private javax.swing.JComboBox<String> jComboBoxUnidad;
@@ -641,6 +745,8 @@ public class UsaProyecto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -664,6 +770,7 @@ public class UsaProyecto extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldClienteNombre;
     private javax.swing.JTextField jTextFieldClienteTelefono;
     private javax.swing.JTextField jTextFieldCodigo;
+    private javax.swing.JTextField jTextFieldCodigoGestion;
     private javax.swing.JTextField jTextFieldContactoCargo;
     private javax.swing.JTextField jTextFieldContactoNombre;
     private javax.swing.JTextField jTextFieldDuracion;
